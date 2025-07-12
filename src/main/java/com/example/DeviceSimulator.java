@@ -44,6 +44,6 @@ public class DeviceSimulator {
     }
 
     public static void main(String[] args) {
-        simulateDevices(5, 10);
+        simulateDevices(100, 50);
     }
 }
