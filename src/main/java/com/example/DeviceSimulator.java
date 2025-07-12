@@ -1,3 +1,4 @@
+import software.amazon.awssdk.regions.Region;
 import java.util.Random;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,13 @@ public class DeviceSimulator {
     }
 
     public static void main(String[] args) {
-        simulateDevices(5, 10);
+        //local testing:
+        // simulateDevices(5, 10);
+        String streamName = "iot-devices";
+        Region region = Region.US_EAST_1;
+
+        KinesisSender sender = new KinesisSender(streamName, region);
+
+        simulateDevices(5,10);
     }
 }

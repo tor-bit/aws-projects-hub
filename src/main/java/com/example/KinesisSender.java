@@ -24,4 +24,8 @@ public class KinesisSender {
 
         client.putRecord(request);
     }
+
+    public void close() {
+        client.close();
+    }
 }
