@@ -10,7 +10,7 @@ public class Device {
         this.deviceID = deviceID;
         this.temperature = temperature;
         this.timestamp = Instant.now(); // sets the timestamp at creation
-    }
+    } 
 
     // Getters
     public int getDeviceID() {
