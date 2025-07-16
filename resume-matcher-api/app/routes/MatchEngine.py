@@ -3,11 +3,21 @@ from sklearn.metrics.pairwise import cosine_similarity
 import re
 
 class MatchEngine:
-    def __init__(self, job_descriptions: list[str], resume: dict):
+    def __init__(self):
         self.tfidf_vectorizer = TfidfVectorizer(stop_words='english') # doesnt use native words like and, the, etc.
-        self.job_descriptions = job_descriptions
-        self.resume = resume
 
+    def set_job_descriptions(self, job_descriptions: list[str]):
+        """
+        Set the job descriptions to be used for matching.
+        """
+        self.job_descriptions = job_descriptions
+
+    def set_cv(self, cv: dict):
+        """
+        Get the current candidate cv.
+        """
+        self.cv = cv.dict()
+    
     def __preprocess(self, text: str) -> str:
         """
         Preprocess the input text by converting it to lowercase and removing punctuation.
@@ -25,25 +35,25 @@ class MatchEngine:
         vectorised_desc = self.tfidf_vectorizer.fit_transform(cleaned)
         return vectorised_desc
     
-    def __vectorize_resume(self):
+    def __vectorize_cv(self):
         """
-        Vectorizes the resume using TF-IDF.
+        Vectorizes the cv using TF-IDF.
         """
-        # Combine resume fields into a single string, clean it up, and vectorize
-        resume_text = ' '.join([self.__preprocess(str(value)) for value in self.resume.values()])
-        vectorised_resume = self.tfidf_vectorizer.transform([resume_text])
-        return vectorised_resume
+        # Combine cv fields into a single string, clean it up, and vectorize
+        cv_text = ' '.join([self.__preprocess(str(value)) for value in self.cv.values()])
+        vectorised_cv = self.tfidf_vectorizer.transform([cv_text])
+        return vectorised_cv
     
-    def get_ranked_jobs_from_resume(self, top_n=5):
+    def get_ranked_jobs_from_cv(self, top_n):
         """
-        Compares the resume against the job descriptions and returns a ranked list of jobs based on cosine similarity.
+        Compares the cv against the job descriptions and returns a ranked list of jobs based on cosine similarity.
         """
-        # Vectorize the job descriptions and the resume
+        # Vectorize the job descriptions and the cv
         vectorised_desc = self.__vectorize_job_descriptions()
-        vectorised_resume = self.__vectorize_resume()
+        vectorised_cv = self.__vectorize_cv()
         
-        # Calculate cosine similarity between the resume and each job description
-        cos_similarities = cosine_similarity(vectorised_resume, vectorised_desc)[0]
+        # Calculate cosine similarity between the cv and each job description
+        cos_similarities = cosine_similarity(vectorised_cv, vectorised_desc)[0]
         
         # Get indices of jobs sorted by similarity score in descending order
         ranked_indices = cos_similarities.argsort()[::-1]
@@ -51,13 +61,13 @@ class MatchEngine:
         
         # Create a ranked list of jobs with their similarity scores
         ranked_jobs = [(self.job_descriptions[i], cos_similarities[i]) for i in ranked_indices]
-        print(f"Ranked Jobs: {ranked_jobs}")
+        print(f"Ranked Jobs: {ranked_jobs[:top_n]}")
         
         return ranked_jobs
 
 # Example usage: Testing the MatchEngine class
 # if __name__ == "__main__":
-#     # Example job descriptions and a resume
+#     # Example job descriptions and a cv
 #     job_descriptions = [
 #         "Software Engineer with experience in Python and machine learning.",
 #         "Data Scientist with expertise in data analysis and statistical modeling.",
@@ -66,13 +76,13 @@ class MatchEngine:
 #         "Project Manager with strong leadership and communication skills."
 #     ]
     
-#     resume = {
+#     cv = {
 #         "name": "John Doe",
 #         "skills": "Python, machine learning, data analysis",
 #         "experience": "Worked on various software projects involving Python and data science."
 #     }
-#     match_engine = MatchEngine(job_descriptions, resume)
-#     ranked_jobs = match_engine.get_ranked_jobs_from_resume(top_n=3)
+#     match_engine = MatchEngine(job_descriptions, cv)
+#     ranked_jobs = match_engine.get_ranked_jobs_from_cv(top_n=3)
     
 #     for job, score in ranked_jobs:
 #         print(f"Job: {job}, Similarity Score: {score:.4f}")
