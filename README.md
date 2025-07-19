@@ -6,9 +6,6 @@ This project is a Python-based FastAPI application that takes a candidate's CV a
 
 - FastAPI-based RESTful API
 - TF-IDF + Cosine Similarity for text matching
-- Modular, testable design with clear separation of concerns
-- Designed to highlight CS fundamentals (algorithms, OOP, data structures)
-- Easily extendable for real-world recruiting platforms
 
 ---
 
