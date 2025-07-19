@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Thabile",
+    "skills": ["python", "aws", "debugging"],
+    "experience": 3,
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Bareng",
+    "skills": ["java", "spring", "docker"],
+    "experience": 5,
+    "available": false
+  }
+]

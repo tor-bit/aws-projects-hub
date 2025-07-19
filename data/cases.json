@@ -1,0 +1,58 @@
+[
+  {
+    "case_id": 101,
+    "description": "Production server is down. No customer access.",
+    "required_skills": ["aws", "linux", "ec2"],
+    "complexity": "high",
+    "severity": "SEV-1",
+    "Assigned": {
+      "agent_name": "",
+      "assigned_date": ""
+    }
+  },
+  {
+    "case_id": 102,
+    "description": "Customer is getting 500 error on login.",
+    "required_skills": ["backend", "java", "springboot"],
+    "complexity": "medium",
+    "severity": "2",
+    "Assigned": {
+      "agent_name": "",
+      "assigned_date": ""
+    }
+  },
+  {
+    "case_id": 103,
+    "description": "Page is loading slowly for mobile users.",
+    "required_skills": ["frontend", "javascript", "performance"],
+    "complexity": "medium",
+    "severity": "3",
+    "Assigned": {
+      "agent_name": "",
+      "assigned_date": ""
+    }
+
+  },
+  {
+    "case_id": 104,
+    "description": "Customer needs help setting up an S3 bucket.",
+    "required_skills": ["aws", "s3", "permissions"],
+    "complexity": "low",
+    "severity": "4",
+    "Assigned": {
+      "agent_name": "",
+      "assigned_date": ""
+    }
+  },
+  {
+    "case_id": 105,
+    "description": "Feature request: Support for dark mode.",
+    "required_skills": ["frontend", "ui/ux"],
+    "complexity": "low",
+    "severity": "4",
+    "Assigned": {
+      "agent_name": "",
+      "assigned_date": ""
+    }
+  }
+]
