@@ -2,6 +2,7 @@
 # Bytecode
 __pycache__/
 *.py[cod]
+__pycache__
 
 # Virtual env
 venv/
