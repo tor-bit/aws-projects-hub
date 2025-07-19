@@ -60,7 +60,7 @@ class MatchEngine:
         print(f"Ranked Indices: {ranked_indices}")
         
         # Create a ranked list of jobs with their similarity scores
-        ranked_jobs = [(self.job_descriptions[i], cos_similarities[i]) for i in ranked_indices]
+        ranked_jobs = [(self.job_descriptions[i], float(cos_similarities[i])) for i in ranked_indices]
         print(f"Ranked Jobs: {ranked_jobs[:top_n]}")
         
         return ranked_jobs
