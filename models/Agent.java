@@ -6,6 +6,7 @@ public class Agent {
     private int experience;
     private boolean available;
 
+    public Agent() {}
 
     // Constructor
     public Agent(int id, String name, String[] skills, int experience, boolean available) {

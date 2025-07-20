@@ -12,7 +12,10 @@ public class Main {
     public static void main(String[] args) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            List<Agent> agents = mapper.readValue(new File("data/agents.json"), new TypeReference<List<Agent>>() {});
+            List<Agent> agents = mapper.readValue(
+                new File("data/agents.json"),
+                new TypeReference<List<Agent>>() {}
+            );
             for (Agent agent : agents) {
                 System.out.println(agent);
             }
