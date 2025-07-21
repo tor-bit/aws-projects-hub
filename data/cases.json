@@ -4,7 +4,7 @@
     "description": "Production server is down. No customer access.",
     "required_skills": ["aws", "linux", "ec2"],
     "complexity": "high",
-    "severity": "SEV-1",
+    "severity": "1",
     "Assigned": {
       "agent_name": "",
       "assigned_date": ""

@@ -8,7 +8,6 @@ public class Agent {
 
     public Agent() {}
 
-    // Constructor
     public Agent(int id, String name, String[] skills, int experience, boolean available) {
         this.id = id;
         this.name = name;
@@ -17,7 +16,6 @@ public class Agent {
         this.available = available;
     }
 
-    // Getters
     public int getId() {
         return id;
     }
@@ -38,7 +36,6 @@ public class Agent {
         return available;
     }
 
-    // Setters
     public void setId(int id) {
         this.id = id;
     }
@@ -58,4 +55,25 @@ public class Agent {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    
+    // to assit with printing out agent details
+    @Override
+    public String toString() {
+        String skills_list = "[";
+        for (int i = 0; i < skills.length; i++) {
+            if (i == skills.length - 1) {
+                skills_list += skills[i] + "]";
+                continue;
+            }
+            skills_list += skills[i] + ", ";
+        }
+        return "Agent{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", skills=" + skills_list +
+                ", Available=" + available +
+                '}';
+    }
+
 }
