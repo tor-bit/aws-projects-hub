@@ -12,5 +12,33 @@
     "skills": ["java", "spring", "docker"],
     "experience": 5,
     "available": false
+  },
+  {
+    "id": 3,
+    "name": "Lerato",
+    "skills": ["python", "data analysis", "pandas"],
+    "experience": 4,
+    "available": true
+  },
+  {
+    "id": 4,
+    "name": "Sipho",
+    "skills": ["node.js", "aws", "lambda"],
+    "experience": 2,
+    "available": true
+  },
+  {
+    "id": 5,
+    "name": "Ayanda",
+    "skills": ["go", "docker", "kubernetes"],
+    "experience": 6,
+    "available": false
+  },
+  {
+    "id": 6,
+    "name": "Nkosi",
+    "skills": ["java", "spring boot", "postgres"],
+    "experience": 5,
+    "available": true
   }
 ]

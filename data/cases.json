@@ -5,6 +5,7 @@
     "required_skills": ["aws", "linux", "ec2"],
     "complexity": "high",
     "severity": "1",
+    "isAssigned": false,
     "Assigned": {
       "agent_name": "",
       "assigned_date": ""
@@ -16,6 +17,7 @@
     "required_skills": ["backend", "java", "springboot"],
     "complexity": "medium",
     "severity": "2",
+    "isAssigned": false,
     "Assigned": {
       "agent_name": "",
       "assigned_date": ""
@@ -27,6 +29,7 @@
     "required_skills": ["frontend", "javascript", "performance"],
     "complexity": "medium",
     "severity": "3",
+    "isAssigned": false,
     "Assigned": {
       "agent_name": "",
       "assigned_date": ""
@@ -39,6 +42,7 @@
     "required_skills": ["aws", "s3", "permissions"],
     "complexity": "low",
     "severity": "4",
+    "isAssigned": false,
     "Assigned": {
       "agent_name": "",
       "assigned_date": ""
@@ -50,6 +54,7 @@
     "required_skills": ["frontend", "ui/ux"],
     "complexity": "low",
     "severity": "4",
+    "isAssigned": false,
     "Assigned": {
       "agent_name": "",
       "assigned_date": ""
