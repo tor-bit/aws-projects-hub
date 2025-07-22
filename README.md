@@ -1,4 +1,99 @@
-# aws-projects-hub
+# Case Routing Simulator
 
-$ javac -cp "lib/*" -d out app/*.java models/*.java
-$ java -cp "out;lib/*" app.Main
+A Java-based simulator that models incoming support cases and routes them to the best‑matched available engineer based on case severity, required skills, and agent experience.
+
+---
+
+## Features
+
+- **Severity prioritization**  
+  Cases with lower `severity` values (1 = highest urgency) are assigned first.
+
+- **Skill matching**  
+  Agents are scored by the number of required skills they share with a case.
+
+- **Experience bonus**  
+  Each year of experience adds +1 to an agent’s match score.
+
+- **Simple assignment**  
+  The highest‑scoring available agent “wins” the case.
+
+- **Console output**  
+  Assignments and final state are printed to the terminal.
+
+---
+
+## Project Structure
+
+call-center-simulator/
+├── data/
+│ ├── agents.json # List of Agent records
+│ └── cases.json # List of Case records
+│
+├── lib/ # Third‑party JARs (Jackson)
+│ ├── jackson-core-.jar
+│ ├── jackson-databind-.jar
+│ └── jackson-annotations-*.jar
+│
+├── models/
+│ ├── Agent.java # POJO for support engineers
+│ └── Case.java # POJO for support cases
+│
+├── app/
+│ ├── CaseAssigner.java # Core assignment logic
+│ └── Main.java # Entry point (loads JSON & invokes assigner)
+│
+└── out/ # Compiled .class files (javac output)
+
+---
+
+## Prerequisites
+
+- **Java 8+**  
+- **Jackson** JARs placed in `lib/`  
+- A terminal or command prompt
+
+---
+
+## Build & Run
+1. **Compile** all sources:
+
+**macOS/Linux**  
+```
+   mkdir -p out
+   javac -cp "lib/*" -d out models/*.java app/*.java
+```
+**windows**
+```
+mkdir out
+javac -cp "lib/*;out" -d out models\*.java app\*.java
+```
+
+2. Run the simulator:
+
+**macOS/Linux**  
+```
+java -cp "out:lib/*" app.Main
+```
+**windows**
+```
+java -cp "out;lib/*" app.Main
+```
+
+## You should see output similar to:
+```
+Starting case assignment...
+Assigned case 102 to Alice (score=5)
+Assigned case 104 to Bob (score=3)
+No available agent for case 105
+
+Final case assignments:
+Case{case_id=102, description='500 error on login.', required_skills=[java, springboot], complexity='medium', severity=2, Assigned={agent_name=Alice, assigned_date=2025-07-21}}
+…
+```
+
+## Next Steps:
+Tie‑breaking: Introduce agent load or random selection for equal scores.
+Dynamic updates: Reload JSON periodically or watch for file changes.
+Persistence: Write updated assignments back to JSON or a database.
+Concurrency: Simulate asynchronous case arrivals.
