@@ -25,8 +25,6 @@ A Java-based simulator that models incoming support cases and routes them to the
 
 ## Project Structure
 
-## Project Structure
-
 ```
 call-center-simulator/
 ├── data/
