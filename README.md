@@ -1,4 +1,4 @@
-# CV Scorer – Resume to Job Matcher (Project #2)
+# CV Scorer – Resume to Job Matcher 
 
 This project is a Python-based FastAPI application that takes a candidate's CV and compares it against a list of job descriptions, ranking them based on relevance using text similarity algorithms.
 
