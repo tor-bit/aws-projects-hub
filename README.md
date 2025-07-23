@@ -25,25 +25,29 @@ A Java-based simulator that models incoming support cases and routes them to the
 
 ## Project Structure
 
+## Project Structure
+
+```
 call-center-simulator/
 ├── data/
-│ ├── agents.json # List of Agent records
-│ └── cases.json # List of Case records
+│   ├── agents.json              # List of Agent records
+│   └── cases.json               # List of Case records
 │
-├── lib/ # Third‑party JARs (Jackson)
-│ ├── jackson-core-.jar
-│ ├── jackson-databind-.jar
-│ └── jackson-annotations-*.jar
+├── lib/                         # Third‑party JARs (Jackson) - To assist with reading from the files
+│   ├── jackson-core-*.jar
+│   ├── jackson-databind-*.jar
+│   └── jackson-annotations-*.jar
 │
 ├── models/
-│ ├── Agent.java # POJO for support engineers
-│ └── Case.java # POJO for support cases
+│   ├── Agent.java               # POJO for support engineers
+│   └── Case.java                # POJO for support cases
 │
 ├── app/
-│ ├── CaseAssigner.java # Core assignment logic
-│ └── Main.java # Entry point (loads JSON & invokes assigner)
+│   ├── CaseAssigner.java        # Core assignment logic
+│   └── Main.java                # Entry point (loads JSON & invokes assigner)
 │
-└── out/ # Compiled .class files (javac output)
+└── out/                         # Compiled .class files (javac output)
+```
 
 ---
 
@@ -66,7 +70,7 @@ call-center-simulator/
 **windows**
 ```
 mkdir out
-javac -cp "lib/*;out" -d out models\*.java app\*.java
+javac -cp "lib/*;out" -d out models/*.java app/*.java
 ```
 
 2. Run the simulator:
@@ -83,17 +87,21 @@ java -cp "out;lib/*" app.Main
 ## You should see output similar to:
 ```
 Starting case assignment...
-Assigned case 102 to Alice (score=5)
-Assigned case 104 to Bob (score=3)
-No available agent for case 105
+Assigned case 101 to Thabile (score=13)
+Assigned case 102 to Nkosi (score=15)
+Assigned case 103 to Lerato (score=4)
+Assigned case 104 to Sipho (score=12)
+No available agent with skills matching for case 105
 
 Final case assignments:
-Case{case_id=102, description='500 error on login.', required_skills=[java, springboot], complexity='medium', severity=2, Assigned={agent_name=Alice, assigned_date=2025-07-21}}
+Case{case_id=101, description='Production server is down. No customer access.', required_skills=[aws, linux, ec2], complexity='high', severity=1, Assigned={Thabile=Wed Jul 23 23:59:48 SAST 2025}}
 …
 ```
 
 ## Next Steps:
+```
 Tie‑breaking: Introduce agent load or random selection for equal scores.
 Dynamic updates: Reload JSON periodically or watch for file changes.
 Persistence: Write updated assignments back to JSON or a database.
 Concurrency: Simulate asynchronous case arrivals.
+```

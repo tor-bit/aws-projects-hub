@@ -45,7 +45,11 @@ public class CaseAssigner {
                     }
                 }
                 if (matchCount > 0) {
-                    int combinedScore = matchCount + a.getExperience();
+                    int combinedScore = matchCount * 10 + a.getExperience(); // making the skills count more significant
+                    scoreMap.put(a, combinedScore);
+                }
+                else {
+                    int combinedScore = a.getExperience(); // Only experience if no skill match.
                     scoreMap.put(a, combinedScore);
                 }
             }
@@ -59,19 +63,27 @@ public class CaseAssigner {
                     bestAgent = entry.getKey();
                 }
             }
-
             // 5. Assign case if agent found
             if (bestAgent != null) {
-                bestAgent.setAvailable(false);
-                assignedInfo.put("agent_id", new Date()); // placeholder or new Date for assignment time
-                assignedInfo.put("agent_name", new Date());
-                assignedInfo.put("assigned_date", new Date());
-                // above map values: agent_id and agent_name expected as Date? mismatch. Better to use date only for assigned_date.
+                caze.setAssigned(true);
 
+                // Update case assignment details
+                caze.getAssigned().clear(); // Clear previous assignments
+                caze.getAssigned().put(bestAgent.getName(), new Date());
+        
+                // Need to update the agents object passed in the main method
+                 for (Agent agent : agents) {
+                     if (agent.getId() == bestAgent.getId()) {
+                         agent.setAvailable(false);
+                         break;
+                     }
+                }
+            
                 System.out.println("Assigned case " + caze.getCase_id()
                         + " to " + bestAgent.getName() + " (score=" + bestScore + ")");
             } else {
-                System.out.println("No available agent for case " + caze.getCase_id());
+                System.out.println("No available agent with skills matching for case " + caze.getCase_id());
+
             }
         }
     }
