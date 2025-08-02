@@ -26,7 +26,7 @@ A Java-based simulator that models incoming support cases and routes them to the
 ## Project Structure
 
 ```
-call-center-simulator/
+case-router/
 ├── data/
 │   ├── agents.json              # List of Agent records
 │   └── cases.json               # List of Case records
